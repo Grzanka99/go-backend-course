@@ -1,0 +1,13 @@
+{
+  "name": "backend-go",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon --exec go run ./cmd/server/main.go --signal SIGTERM"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
