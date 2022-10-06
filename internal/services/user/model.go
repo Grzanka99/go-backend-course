@@ -17,7 +17,3 @@ type UserLoginPayload struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
-
-type Message struct {
-	Message string `json:"message"`
-}

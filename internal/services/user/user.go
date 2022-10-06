@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/grzanka99/backend-go/internal/t"
 	"github.com/grzanka99/backend-go/internal/utils"
 )
 
@@ -21,7 +22,7 @@ func UserRegister(rw http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	body, err := io.ReadAll(req.Body)
 	if err != nil {
-		utils.InternalServerError(Message{
+		utils.InternalServerError(t.Message{
 			Message: "Internal server error",
 		}, rw)
 		return
@@ -30,14 +31,14 @@ func UserRegister(rw http.ResponseWriter, req *http.Request) {
 	var payload UserRegistrationPayload
 	err = json.Unmarshal(body, &payload)
 	if err != nil {
-		utils.BadRequest(Message{
+		utils.BadRequest(t.Message{
 			Message: "Wrong payload",
 		}, rw)
 		return
 	}
 
 	if payload.Username == "" || payload.Email == "" || payload.Password == "" {
-		utils.BadRequest(Message{
+		utils.BadRequest(t.Message{
 			Message: "Wrong payload",
 		}, rw)
 		return
